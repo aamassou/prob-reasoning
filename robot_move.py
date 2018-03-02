@@ -91,7 +91,11 @@ def get_transition_matrix():
     return transitions
 
 def get_ls(x, y):
-    ls = [(x-1,y-1), (x-1, y), (x-1, y+1), (x, y-1), (x, y+1), (x+1, y-1), (x+1, y), (x+1, y+1)]
+    ls = []
+    for i in range(-1,2):
+        for j in range(-1,2):
+            ls.append((x+i, y+j))
+
 
     for adj_x, adj_y in ls:
         if adj_x >= grid_size or adj_x < 0 or adj_y >= grid_size or adj_y < 0:
@@ -100,9 +104,10 @@ def get_ls(x, y):
     return ls
 
 def get_ls2(x, y):
-    ls2 = [(x-2, y-2), (x-2, y-1), (x-2, y), (x-2, y+1), (x-2, y+2), (x-1, y-2),
-           (x-1, y+2), (x, y-2), (x, y+2), (x+1, y-2), (x+1, y+2), (x+2, y-2),
-           (x+2, y-1), (x+2, y), (x+2, y+1), (x+2, y+2)]
+    ls2 = []
+    for i in range(-2,3):
+        for j in range(-2,3):
+            ls2.append((x+i, y+j))
 
     for adj_x, adj_y in ls2:
         if adj_x >= grid_size or adj_x < 0 or adj_y >= grid_size or adj_y < 0:
